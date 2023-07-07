@@ -1,0 +1,50 @@
+{
+  "description": "img",
+  "manifest_version": 3,
+  "name": "test,测试api用",
+  "version": "1.0.0",
+  "action": {
+      "default_icon": {
+          "19": "assets/icons/icon1.png"
+      },
+      "default_popup": "popup.html",
+      "default_title": "my-chrome-vue"
+  },
+  "permissions": [
+    "contextMenus",
+    "tabs",
+    "notifications",
+    "webRequest",
+    "storage",
+    "cookies"
+  ],
+"host_permissions": [
+  "https://www.baidu.com/*",
+  "http://*/*",
+  "https://*/*",
+  "*://*/*",
+  "<all_urls>"	  
+], 
+"externally_connectable": {
+  "matches": ["*://*.xxxxxx.com/*"]
+},
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "content_scripts": [
+    {
+        "matches": [
+            "http://*/*",
+            "https://*/*"
+        ],
+        "css": [
+          "css/inject.css"
+        ],
+        "js": [
+          "js/app2.js",
+          "js/inject.js"
+        ],
+        "run_at": "document_end"
+    }
+  ]
+}
